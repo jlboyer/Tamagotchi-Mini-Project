@@ -12,13 +12,18 @@ class Tomogatchi {
       hours: null,
       minutes: null
     };
-    
+    this.timerId
   }
   birthday() {
     const birthTime = new Date();
     this.birthTime.year = birthTime.getFullYear();
     this.birthTime.month = birthTime.getMonth();
     this.birthTime.day = birthTime.getDay();
+  }
+  lifeTimer() {
+    tomogotchi = setInterval(() => {
+      console.log(new Date());
+    }, 60 * 1000);
   }
 }
 
@@ -28,18 +33,11 @@ const game = {
     //this will cycle through operations
     //1. create tomogotchi
     this.spawnTomogotchi();
-    this.startTimer();
   },
   spawnTomogotchi() {
     this.tomogotchi = new Tomogatchi();
     this.tomogotchi.birthday();
   },
-  startTimer() {
-    let tomogotchi
-    setInterval(() => {
-      console.log(new Date());
-    }, 60 * 1000);
-  }
 };
 
 game.play();
