@@ -1,7 +1,10 @@
 class Tomogatchi {
   constructor(){
     this.name = ''
-
+    this.hunger = Math.floor(Math.random()*10 + 1)
+    this.sleepiness = Math.floor(Math.random()*10 + 1)
+    this.boredom = Math.floor(Math.random()*10 + 1)
+    this.age = 0
   }
 
 }
