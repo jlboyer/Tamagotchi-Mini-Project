@@ -1,3 +1,10 @@
+/* @font-face{
+  font-family: 'ARCADECLASSIC';
+  src: url('resources/ARCADECLASSIC.TTF') format('truetype');
+} */
+
+
+
 *{
   margin: 0;
   padding:0;
@@ -25,10 +32,13 @@ body,html{
 #subtitle-header{
   width:600px;
   transform:translateY(-80px);
-  
-  
 }
+p{
+  color:white;
+  font-size: 20px;
+  font-family: 'Bungee Hairline', cursive;
 
+}
 h1 {
   font-family: 'Kosugi', sans-serif;
   color: rgb(226, 43, 214);
