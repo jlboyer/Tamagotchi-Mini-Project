@@ -27,6 +27,9 @@ class Tamagatchi {
     this.birthTime.hours = birthTime.getHours();
     this.birthTime.minutes = birthTime.getMinutes();
   }
+  isAlive(){
+    return this.hunger < 10 && this.sleepiness < 10 && this.boreRate < 10
+  }
   
 }
 
@@ -49,6 +52,9 @@ const game = {
   dayInTheLife(){
     this.updateAge()
     this.displayAge()
+    this.updateMetrics()
+    this.displayMetrics()
+    console.log("is alive:", this.tamagotchi.isAlive())
   },
   lifeTimer() {
     this.tamagotchi.timerId = setInterval(() => {
@@ -58,6 +64,16 @@ const game = {
   displayAge() {
     console.log("Mins elapsed:", this.tamagotchi.ageHumanMins)
     console.log("Tama age:", this.tamagotchi.ageTomoYears)
+  },
+  displayMetrics(){
+    console.log("Hunger:",Math.ceil(this.tamagotchi.hunger))
+    console.log("Sleepiness:",Math.ceil(this.tamagotchi.sleepiness))
+    console.log("Boredom:",Math.ceil(this.tamagotchi.boredom))
+  },
+  updateMetrics(){
+    this.tamagotchi.hunger += this.tamagotchi.ageTomoYears * this.tamagotchi.hungerRate
+    this.tamagotchi.sleepiness += this.tamagotchi.ageTomoYears * this.tamagotchi.sleepinessRate
+    this.tamagotchi.boredom += this.tamagotchi.ageTomoYears * this.tamagotchi.boreRate
   }
 };
 
