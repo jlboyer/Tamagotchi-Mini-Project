@@ -47,6 +47,12 @@ h2 {
 
 #status{
   font-family: Impact;
-  font-size: 40px;
+  font-size: 30px;
   color: white;
+  text-align: right;
 }
+img{
+  max-width: 100%;
+   height:auto;
+   align-self:center;
+  }
