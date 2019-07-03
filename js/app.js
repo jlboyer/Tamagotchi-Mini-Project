@@ -33,6 +33,7 @@ class Tamagatchi {
     this.birthTime.day = birthTime.getDay();
     this.birthTime.hours = birthTime.getHours();
     this.birthTime.minutes = birthTime.getMinutes();
+    console.log(`Your tamagotchi was born ${birthTime}`)
   }
   isAlive() {
     return this.hunger < 10 && this.sleepiness < 10 && this.boreRate < 10;
@@ -41,13 +42,14 @@ class Tamagatchi {
 
 const game = {
   tamagotchi: {},
-  action: null,
+  pauseDisplay: false,
   play() {
     //this will cycle through operations
     //1. create tamagotchi
     this.spawnTamagotchi();
   },
   spawnTamagotchi() {
+    console.log('Spawning tamagotchi...')
     this.tamagotchi = new Tamagatchi();
     this.tamagotchi.birthday();
     this.lifeTimer();
@@ -59,16 +61,21 @@ const game = {
   },
   dayInTheLife() {
     this.updateAge();
-    this.displayAge();
     this.updateMetrics();
-    this.displayMetrics();
-    console.log("is alive:", this.tamagotchi.isAlive());
-    this.promptInteraction();
+
+    // if (!this.pauseDisplay) {
+      this.displayAge();
+      this.displayMetrics();
+      console.log("is alive:", this.tamagotchi.isAlive());
+     // this.promptInteraction();
+    // }
   },
   lifeTimer() {
+    console.log('into the brave unknown..')
     this.tamagotchi.timerId = setInterval(() => {
+      console.log('hi')
       this.dayInTheLife();
-    }, 1000); //make sure to add back * 60 for mins!!!!!
+    }, 5000); //make sure to add back * 60 for mins!!!!!
   },
   displayAge() {
     console.log("Mins elapsed:", this.tamagotchi.ageHumanMins);
@@ -88,6 +95,7 @@ const game = {
       this.tamagotchi.ageTomoYears * this.tamagotchi.boreRate;
   },
   promptInteraction() {
+    this.pauseDisplay = true;
     rl.question(
       "Would you like to (F)eed (P)lay or (S)end to bed? ",
       answer => {
@@ -113,16 +121,19 @@ const game = {
     );
   },
   feedTama() {
-    console.log("feeding tamagotchi");
+    console.log("feeding tamagotchi...");
+    setTimeout(() => {
+      this.pauseDisplay = false;
+    }, 2000);
   },
   playTama() {
-    console.log("playing with tamagotchi");
+    console.log("playing with tamagotchi...");
   },
   sleepTama() {
     console.log("shh..tamagotchi is sleeping");
   },
 };
 
-//game.play();
+game.play();
 
-game.promptInteraction();
+// game.promptInteraction();
