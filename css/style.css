@@ -44,3 +44,8 @@ h2 {
   transform: rotate(-5deg);
   background-color: transparent;
 }
+
+p{
+  font-size: 80px;
+  color: white;
+}
