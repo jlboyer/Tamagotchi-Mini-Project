@@ -1,4 +1,4 @@
-class Tomogatchi {
+class Tamagatchi {
   constructor() {
     this.name = "";
     this.hunger = Math.floor(Math.random() * 10 + 1);
@@ -35,17 +35,17 @@ class Tomogatchi {
 const intId = setInterval(() => console.log(intId), 1000);
 
 const game = {
-  tomogotchi: {},
+  tamagotchi: {},
   play() {
     //this will cycle through operations
-    //1. create tomogotchi
-    this.spawnTomogotchi();
+    //1. create tamagotchi
+    this.spawnTamagotchi();
   },
-  spawnTomogotchi() {
-    this.tomogotchi = new Tomogatchi();
-    this.tomogotchi.birthday();
+  spawnTamagotchi() {
+    this.tamagotchi = new Tamagatchi();
+    this.tamagotchi.birthday();
   },
 };
 
 game.play();
-console.log(game.tomogotchi);
+console.log(game.tamagotchi);
