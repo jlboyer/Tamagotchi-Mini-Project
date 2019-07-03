@@ -1,0 +1,46 @@
+*{
+  margin: 0;
+  padding:0;
+}
+body,html{
+  background-color: black;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+}
+.container{
+  width: 500px;
+  display:flex;
+  align-content: center;
+  flex-flow: column;
+}
+#title-header{
+  display: flex;
+  width:500px;
+  height:150px;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+}
+#subtitle-header{
+  width:600px;
+  transform:translateY(-80px);
+  
+  
+}
+
+h1 {
+  font-family: 'Kosugi', sans-serif;
+  color: rgb(226, 43, 214);
+  font-size: 100px;
+  text-shadow: 0 0 10px rgb(226, 43, 214);
+}
+
+h2 {
+  font-family: 'Damion', cursive;
+  color: rgb(43, 226, 131);
+  font-size: 80px;
+  text-shadow: 0 0 10px rgb(43, 226, 131);
+  transform: rotate(-5deg);
+  background-color: transparent;
+}

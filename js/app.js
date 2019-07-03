@@ -34,9 +34,14 @@ class Tamagatchi {
     this.birthTime.hours = birthTime.getHours();
     this.birthTime.minutes = birthTime.getMinutes();
     console.log(`Your tamagotchi was born ${birthTime}`)
+    this.giveName()
   }
   isAlive() {
     return this.hunger < 10 && this.sleepiness < 10 && this.boreRate < 10;
+  }
+  giveName() {
+    rl.question("What would you like to name your tamagotchi? ",
+      answer => { this.name = answer})
   }
 }
 
@@ -71,7 +76,7 @@ const game = {
     // }
   },
   lifeTimer() {
-    console.log('into the brave unknown..')
+    console.log('Into the brave unknown..')
     this.tamagotchi.timerId = setInterval(() => {
       console.log('hi')
       this.dayInTheLife();
@@ -121,16 +126,16 @@ const game = {
     );
   },
   feedTama() {
-    console.log("feeding tamagotchi...");
+    console.log(`Feeding tamagotchi ${this.tamagotchi.name}...`);
     setTimeout(() => {
       this.pauseDisplay = false;
     }, 2000);
   },
   playTama() {
-    console.log("playing with tamagotchi...");
+    console.log(`Playing with tamagotchi ${this.tamagotchi.name}...`);
   },
   sleepTama() {
-    console.log("shh..tamagotchi is sleeping");
+    console.log(`Shh..${this.tamagotchi.name} is sleeping`);
   },
 };
 
