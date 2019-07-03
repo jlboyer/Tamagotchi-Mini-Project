@@ -45,7 +45,8 @@ h2 {
   background-color: transparent;
 }
 
-p{
-  font-size: 80px;
+#status{
+  font-family: Impact;
+  font-size: 40px;
   color: white;
 }
