@@ -1,12 +1,19 @@
+const readline = require("readline");
+
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout
+});
+
 class Tamagatchi {
   constructor() {
     this.name = "";
     this.hunger = Math.floor(Math.random() * 5 + 1);
-    this.hungerRate = Math.random()*0.4 + 0.5;
+    this.hungerRate = Math.random() * 0.4 + 0.5;
     this.sleepiness = Math.floor(Math.random() * 5 + 1);
-    this.sleepinessRate = Math.random()*0.4 + 0.5
+    this.sleepinessRate = Math.random() * 0.4 + 0.5;
     this.boredom = Math.floor(Math.random() * 5 + 1);
-    this.boreRate = Math.random()*0.4 + 0.5
+    this.boreRate = Math.random() * 0.4 + 0.5;
     this.ageTomoYears = 0;
     this.ageHumanMins = 0;
     this.minsToTomoYears = 1; //default 1 year is 1 minute
@@ -17,7 +24,7 @@ class Tamagatchi {
       hours: null,
       minutes: null
     };
-    this.timerId = null
+    this.timerId = null;
   }
   birthday() {
     const birthTime = new Date();
@@ -27,14 +34,14 @@ class Tamagatchi {
     this.birthTime.hours = birthTime.getHours();
     this.birthTime.minutes = birthTime.getMinutes();
   }
-  isAlive(){
-    return this.hunger < 10 && this.sleepiness < 10 && this.boreRate < 10
+  isAlive() {
+    return this.hunger < 10 && this.sleepiness < 10 && this.boreRate < 10;
   }
-  
 }
 
 const game = {
   tamagotchi: {},
+  action: null,
   play() {
     //this will cycle through operations
     //1. create tamagotchi
@@ -45,37 +52,77 @@ const game = {
     this.tamagotchi.birthday();
     this.lifeTimer();
   },
-  updateAge(){
-    this.tamagotchi.ageHumanMins++
-    this.tamagotchi.ageTomoYears = this.tamagotchi.ageHumanMins / this.tamagotchi.minsToTomoYears; 
+  updateAge() {
+    this.tamagotchi.ageHumanMins++;
+    this.tamagotchi.ageTomoYears =
+      this.tamagotchi.ageHumanMins / this.tamagotchi.minsToTomoYears;
   },
-  dayInTheLife(){
-    this.updateAge()
-    this.displayAge()
-    this.updateMetrics()
-    this.displayMetrics()
-    console.log("is alive:", this.tamagotchi.isAlive())
+  dayInTheLife() {
+    this.updateAge();
+    this.displayAge();
+    this.updateMetrics();
+    this.displayMetrics();
+    console.log("is alive:", this.tamagotchi.isAlive());
+    this.promptInteraction();
   },
   lifeTimer() {
     this.tamagotchi.timerId = setInterval(() => {
-      this.dayInTheLife()
-    }, 1000);  //make sure to add back * 60 for mins!!!!!
+      this.dayInTheLife();
+    }, 1000); //make sure to add back * 60 for mins!!!!!
   },
   displayAge() {
-    console.log("Mins elapsed:", this.tamagotchi.ageHumanMins)
-    console.log("Tama age:", this.tamagotchi.ageTomoYears)
+    console.log("Mins elapsed:", this.tamagotchi.ageHumanMins);
+    console.log("Tama age:", this.tamagotchi.ageTomoYears);
   },
-  displayMetrics(){
-    console.log("Hunger:",Math.ceil(this.tamagotchi.hunger))
-    console.log("Sleepiness:",Math.ceil(this.tamagotchi.sleepiness))
-    console.log("Boredom:",Math.ceil(this.tamagotchi.boredom))
+  displayMetrics() {
+    console.log("Hunger:", Math.ceil(this.tamagotchi.hunger));
+    console.log("Sleepiness:", Math.ceil(this.tamagotchi.sleepiness));
+    console.log("Boredom:", Math.ceil(this.tamagotchi.boredom));
   },
-  updateMetrics(){
-    this.tamagotchi.hunger += this.tamagotchi.ageTomoYears * this.tamagotchi.hungerRate
-    this.tamagotchi.sleepiness += this.tamagotchi.ageTomoYears * this.tamagotchi.sleepinessRate
-    this.tamagotchi.boredom += this.tamagotchi.ageTomoYears * this.tamagotchi.boreRate
-  }
+  updateMetrics() {
+    this.tamagotchi.hunger +=
+      this.tamagotchi.ageTomoYears * this.tamagotchi.hungerRate;
+    this.tamagotchi.sleepiness +=
+      this.tamagotchi.ageTomoYears * this.tamagotchi.sleepinessRate;
+    this.tamagotchi.boredom +=
+      this.tamagotchi.ageTomoYears * this.tamagotchi.boreRate;
+  },
+  promptInteraction() {
+    rl.question(
+      "Would you like to (F)eed (P)lay or (S)end to bed? ",
+      answer => {
+        answer = answer.toLowerCase().trim();
+        switch (answer) {
+          case "f":
+            this.feedTama();
+            rl.close();
+            break;
+          case "p":
+            this.playTama();
+            rl.close();
+            break;
+          case "s":
+            this.sleepTama();
+            rl.close();
+            break;
+          default:
+            this.promptInteraction();
+            break;
+        }
+      }
+    );
+  },
+  feedTama() {
+    console.log("feeding tamagotchi");
+  },
+  playTama() {
+    console.log("playing with tamagotchi");
+  },
+  sleepTama() {
+    console.log("shh..tamagotchi is sleeping");
+  },
 };
 
-game.play();
+//game.play();
 
+game.promptInteraction();
