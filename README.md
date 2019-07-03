@@ -1,2 +1,2 @@
-# tomogotchi-mini-project
-Tomagotchi Mini-Project
+# tamagotchi-mini-project
+Tamagotchi Mini-Project
