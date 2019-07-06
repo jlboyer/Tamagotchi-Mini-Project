@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Kosugi|Bungee|Damion|Press+Start+2P&display=swap');
+
 body {
   background-color: aliceblue
 }
@@ -12,8 +14,11 @@ body {
   width:240px;
   height:240px;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  font-family: 'Bungee', sans-serif;
 }
 
 .button{
@@ -21,6 +26,12 @@ body {
   height:120px; 
 }
 
-svg:hover{
+.button_container:hover{
+  color:blue;
   fill:blue;
+}
+
+.button_container:active{
+  color:red;
+  fill:red;
 }
