@@ -2,6 +2,12 @@ body {
   background-color: aliceblue
 }
 
+#buttons{
+  width:720px;
+  height:240px;
+  display:flex;
+}
+
 .button_container{
   width:240px;
   height:240px;
