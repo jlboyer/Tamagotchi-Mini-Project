@@ -1,5 +1,35 @@
 @import url('https://fonts.googleapis.com/css?family=Kosugi|Bungee|Damion|Press+Start+2P&display=swap');
 
+:root {
+  /* Set neon colors */
+  --neon-green-glow: rgba(43, 226, 131,0.5);
+  --neon-green-text: rgba(194,249,155,0.5);
+  --neon-pink-glow: rgb(226, 43, 214);
+  --neon-pink-text: rgba(225, 164, 221, 0.5);
+  --neon-blue-glow: rgba(84,153,255);
+  --neon-blue-text: rgb(200, 223, 255,0.7);
+  --neon-ltblue-glow: rgb(153,238,253);
+}
+
+.pink{
+  color: transparent;
+  text-shadow:
+  -0.2px -0.2px 1px var(--neon-pink-text),
+  0.2px 0.2px 1px var(--neon-pink-text),
+  0 0 5px var(--neon-pink-glow),
+  0 0 2px var(--neon-pink-glow),
+  0 0 7px var(--neon-pink-glow),
+  0 0 8px var(--neon-pink-glow),
+  0 0 15px var(--neon-pink-glow);
+  fill: var(--neon-pink-text);
+}
+
+*{
+  margin: 0;
+  padding:0;
+  box-sizing: border-box;
+}
+
 body {
   background-color: aliceblue
 }
@@ -17,7 +47,6 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
   font-family: 'Bungee', sans-serif;
 }
 
