@@ -1,60 +1,39 @@
-@import url('https://fonts.googleapis.com/css?family=Kosugi|Bungee|Damion|Press+Start+2P&display=swap');
+/* @font-face{
+  font-family: 'ARCADECLASSIC';
+  src: url('resources/ARCADECLASSIC.TTF') format('truetype');
+} */
+
+@import url('https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap');
 
 :root {
-  /* Set neon colors */
-  --neon-green-glow: rgba(43, 226, 131,0.5);
-  --neon-green-text: rgba(194,249,155,0.5);
-  --neon-pink-glow: rgb(226, 43, 214);
-  --neon-pink-text: rgba(225, 164, 221, 0.5);
-  --neon-blue-glow: rgba(84,153,255);
-  --neon-blue-text: rgb(200, 223, 255,0.7);
-  --neon-ltblue-glow: rgb(153,238,253);
+  /* Base font size */
+  font-size: 80px;   
+  
+  /* Set neon color */
+  --neon-green: rgba(43, 226, 131,0.5);
+  --neon-pink: rgb(226, 43, 214);
 }
+
+
 
 *{
   margin: 0;
   padding:0;
   box-sizing: border-box;
 }
-
-body{
+body,html{
   background-color: black;
   height: 100%;
-  /* display: flex;
-  align-content: center;
-  justify-content: center; */
-}
+  display: flex;
+  justify-content: center;
 
+}
 .container{
-  width: calc(100vw / 12 * 10);
-  height: calc(100vh / 15 * 13);
-  display: grid;
-  grid-template-rows: 100%;
-  grid-template-columns: auto auto;
-  grid-template-areas: "output" "input";
-  grid-gap: 0px;
+  width: 500px;
+  display:flex;
+  align-content: center;
+  flex-flow: column;
 }
-
-#output{
-  grid-area: output;
-  background: blue;
-}
-
-#input{
-  grid-area: input;
-  background: green;
-  font-size: 100px;
-}
-
-
-
-/* .test{
-  background-color: red;
-  grid-area: 1 / 1 / 8 / 2;
-}
- */
-
-
 #title-header{
   display: flex;
   width:500px;
