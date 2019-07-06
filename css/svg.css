@@ -16,10 +16,9 @@
   text-shadow:
   -0.2px -0.2px 1px var(--neon-pink-text),
   0.2px 0.2px 1px var(--neon-pink-text),
-  0 0 5px var(--neon-pink-glow),
   0 0 2px var(--neon-pink-glow),
+  0 0 5px var(--neon-pink-glow),
   0 0 7px var(--neon-pink-glow),
-  0 0 8px var(--neon-pink-glow),
   0 0 15px var(--neon-pink-glow);
   fill: var(--neon-pink-text);
 }
@@ -31,7 +30,7 @@
 }
 
 body {
-  background-color: aliceblue
+  background-color: black;
 }
 
 #buttons{
@@ -56,8 +55,9 @@ body {
 }
 
 .button_container:hover{
-  color:blue;
-  fill:blue;
+  color: var(--neon-pink-text);
+  fill: var(--neon-pink-text);
+  filter: brightness(2)
 }
 
 .button_container:active{
