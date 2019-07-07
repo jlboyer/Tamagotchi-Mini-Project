@@ -19,6 +19,26 @@ class Tamagatchi {
       minutes: null
     };
     this.timerId = null;
+    this.possibleCrimes = [
+      ['was caught riding the JR line without a ticket',
+      'was caught shoplifting manga from Lawsons',
+      'received a cease and desist letter for downloading the movie \'Scarface\''],
+      ['was caught stealing change from the tip jar at Starbucks',
+      'failed to yield for a little old lady in the crosswalk',
+      'was caught using counterfeit money to buy Boss coffee'],
+      ['got busted for indecent exposure at the public pool',
+      'outran the police in a Toyota Sprinter Trueno AE86',
+      'received a ticket for public intoxication smuggling sake into the local library'],
+      ['was caught with narcotics and Pocky sticks',
+      'was picked out of a lineup for a carjacking a Toyota Supra',
+      'was caught for tax evasion sheltering money in Macau'],
+      ['was involved in a money laundering scheme through a Pachinko parlor',
+      'has been involved in aprotection racket at a local night club',
+      'fingerprint\'s have been found at the scene of a murder'],
+      ['has been operating a multi-million dollar drug smuggling operation',
+      'has been indicted on a massive case of securities fraud',
+      'has assembled a rogue group of mercenaries and acquired a weapon of mass destruction']
+    ]
   }
   birthday() {
     const birthTime = new Date();
@@ -123,34 +143,6 @@ const game = {
     this.tamagotchi.boredom +=
       (this.tamagotchi.ageTomoYears + 1) * this.tamagotchi.boreRate;
   },
-
-/*   promptInteraction() {
-    this.pauseDisplay = true;
-    rl.question(
-      "Would you like to (F)eed (P)lay or (S)end to bed? ",
-      answer => {
-        answer = answer.toLowerCase().trim();
-        switch (answer) {
-          case "f":
-            this.feedTama();
-            rl.close();
-            break;
-          case "p":
-            this.playTama();
-            rl.close();
-            break;
-          case "s":
-            this.sleepTama();
-            rl.close();
-            break;
-          default:
-            this.promptInteraction();
-            break;
-        }
-      }
-    );
-  }, */
-
   feedTama() {
     console.log(`Feeding tamagotchi ${this.tamagotchi.name}...`);
         //reset pacman for animation
