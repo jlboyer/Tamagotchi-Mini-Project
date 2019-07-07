@@ -10,7 +10,7 @@ class Tamagatchi {
     this.boreRate = Math.random() * 0.4 + 0.2;
     this.ageTomoYears = 0;
     this.ageHumanMins = 0;
-    this.minsToTomoYears = 1;
+    this.minsToTomoYears = 0.25;
     this.birthTime = {
       year: null,
       month: null,
@@ -43,6 +43,10 @@ const game = {
   pauseDisplay: false,
   timerSeconds: 0,
   play() {
+    //initialize button event listeners 
+    $("#play_button").on("click", this.playTama.bind(this))
+    $("#feed_button").on("click", this.feedTama.bind(this))
+    $("#sleep_button").on("click", this.sleepTama.bind(this))
     this.spawnTamagotchi();
   },
   spawnTamagotchi() {
@@ -61,11 +65,9 @@ const game = {
     this.updateAge();
     this.displayAge();
     this.updateMetrics();
-    // if (!this.pauseDisplay) {
-      this.displayMetrics();
-      console.log("is alive:", this.tamagotchi.isAlive());
-     // this.promptInteraction();
-    // }
+    this.displayMetrics();
+    console.log("is alive:", this.tamagotchi.isAlive());
+    
   },
   lifeTimer() {
     console.log('Into the brave unknown..')
@@ -112,12 +114,14 @@ const game = {
     $("#val").html(statVal)
   },
   updateMetrics() {
+    //add one so the value increase from start
+    //the older the faster the values increase
     this.tamagotchi.hunger +=
-      this.tamagotchi.ageTomoYears * this.tamagotchi.hungerRate;
+      (this.tamagotchi.ageTomoYears + 1) * this.tamagotchi.hungerRate;
     this.tamagotchi.sleepiness +=
-      this.tamagotchi.ageTomoYears * this.tamagotchi.sleepinessRate;
+      (this.tamagotchi.ageTomoYears + 1) * this.tamagotchi.sleepinessRate;
     this.tamagotchi.boredom +=
-      this.tamagotchi.ageTomoYears * this.tamagotchi.boreRate;
+      (this.tamagotchi.ageTomoYears + 1) * this.tamagotchi.boreRate;
   },
 
 /*   promptInteraction() {
@@ -149,12 +153,27 @@ const game = {
 
   feedTama() {
     console.log(`Feeding tamagotchi ${this.tamagotchi.name}...`);
+    if (this.tamagotchi.hunger > 0)  {
+      this.tamagotchi.hunger -= 1
+      $("#action_gif").attr("src","resources/eat.gif")
+      this.displayMetrics()
+    }
   },
   playTama() {
     console.log(`Playing with tamagotchi ${this.tamagotchi.name}...`);
+    if (this.tamagotchi.boredom > 0)  {
+      this.tamagotchi.boredom -= 1
+      $("#action_gif").attr("src","resources/catari.gif")
+      this.displayMetrics()
+    }
   },
   sleepTama() {
     console.log(`Shh..${this.tamagotchi.name} is sleeping`);
+    if (this.tamagotchi.sleepiness > 0) {
+      this.tamagotchi.sleepiness -= 1
+      $("#action_gif").attr("src","resources/sleep.gif")
+      this.displayMetrics()
+    }
   },
 };
 
