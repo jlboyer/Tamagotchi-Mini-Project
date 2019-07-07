@@ -2,11 +2,11 @@
 class Tamagatchi {
   constructor() {
     this.name = "";
-    this.hunger = Math.floor(Math.random() * 2 + 1);
+    this.hunger = 0;
     this.hungerRate = Math.random() * 0.4 + 0.2;
-    this.sleepiness = Math.floor(Math.random() * 2 + 1);
+    this.sleepiness = 0;
     this.sleepinessRate = Math.random() * 0.4 + 0.2;
-    this.boredom = Math.floor(Math.random() * 2 + 1);
+    this.boredom = 0;
     this.boreRate = Math.random() * 0.4 + 0.2;
     this.ageTomoYears = 0;
     this.ageHumanMins = 0;
@@ -89,12 +89,13 @@ const game = {
     this.displayAge();
     this.updateMetrics();
     this.displayMetrics();
+    console.log(this.tamagotchi.isAlive())
     if (!this.tamagotchi.isAlive()) this.gameOver();
   },
   gameOver(){
     clearInterval(this.tamagotchi.timerId)
     $('#overlay').css("display", "block");
-    // $('#overlay').on("click",this.play())
+    // $('#overlay').on("click",this.play());
   },
   lifeTimer() {
     console.log('Into the brave unknown..')
@@ -140,6 +141,9 @@ const game = {
     for (let i = 0; i < this.tamagotchi.wantedLevel; i++){
       statVal += "&#9733;"
     }
+    for (let i = 0; i <5 -this.tamagotchi.wantedLevel; i++){
+      statVal += "&star;"
+    }
     $("#val").html(statVal)
   },
   updateMetrics() {
@@ -151,7 +155,7 @@ const game = {
       (this.tamagotchi.ageTomoYears + 1) * this.tamagotchi.sleepinessRate;
     this.tamagotchi.boredom +=
       (this.tamagotchi.ageTomoYears + 1) * this.tamagotchi.boreRate;
-    this.tamagotchi.crimeRate = Math.max(this.tamagotchi.hunger, this.tamagotchi.boredom, this.tamagotchi.sleepiness)/50;
+    this.tamagotchi.crimeRate = Math.max(this.tamagotchi.hunger, this.tamagotchi.boredom, this.tamagotchi.sleepiness)/30;
     if (Math.random()<this.tamagotchi.crimeRate){
       this.displayCrime()
     }
