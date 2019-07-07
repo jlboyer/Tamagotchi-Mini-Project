@@ -71,7 +71,7 @@ body {
 #timer{
   grid-area:timer;
   font-family: 'Bungee', sans-serif;
-  font-size: 35px;
+  font-size: 45px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -80,7 +80,7 @@ body {
 #age{
   grid-area:age;
   font-family: 'Bungee', sans-serif;
-  font-size: 30px;
+  font-size: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -98,7 +98,13 @@ body {
 
 #statprogress{
   grid-area: value;
-  
+  font-family: 'Bungee', sans-serif;
+  font-size: 19px;
+  margin: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  text-align: left;
 }
 
 #pic{
