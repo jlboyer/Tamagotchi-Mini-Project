@@ -10,7 +10,7 @@ class Tamagatchi {
     this.boreRate = Math.random() * 0.4 + 0.2;
     this.ageTomoYears = 0;
     this.ageHumanMins = 0;
-    this.minsToTomoYears = 0.25;
+    this.minsToTomoYears = 0.5;
     this.birthTime = {
       year: null,
       month: null,
@@ -39,7 +39,7 @@ class Tamagatchi {
       'has been indicted on a massive case of securities fraud',
       'has assembled a rogue group of mercenaries and acquired a weapon of mass destruction']
     ];
-    this.crimeRate = 0.2;
+    this.crimeRate = 0;
     this.wantedLevel = 0;
   }
   birthday() {
@@ -53,7 +53,7 @@ class Tamagatchi {
     this.giveName()
   }
   isAlive() {
-    return this.hunger < 10 && this.sleepiness < 10 && this.boreRate < 10;
+    return this.hunger < 10 && this.sleepiness < 10 && this.boreRate < 10 && this.wantedLevel < 5;
   }
   giveName() {
     this.name = $('input').val();
@@ -88,8 +88,11 @@ const game = {
     this.displayAge();
     this.updateMetrics();
     this.displayMetrics();
-    console.log("is alive:", this.tamagotchi.isAlive());
-    
+    if (!this.tamagotchi.isAlive()) this.gameOver();
+  },
+  gameOver(){
+    clearInterval(this.tamagotchi.timerId)
+    $('#overlay').css("display", "block");
   },
   lifeTimer() {
     console.log('Into the brave unknown..')
@@ -132,7 +135,9 @@ const game = {
       }
       statVal += "<br>"
     })
-    statVal += "&#9733;"
+    for (let i = 0; i < this.tamagotchi.wantedLevel; i++){
+      statVal += "&#9733;"
+    }
     $("#val").html(statVal)
   },
   updateMetrics() {
@@ -144,16 +149,16 @@ const game = {
       (this.tamagotchi.ageTomoYears + 1) * this.tamagotchi.sleepinessRate;
     this.tamagotchi.boredom +=
       (this.tamagotchi.ageTomoYears + 1) * this.tamagotchi.boreRate;
-    this.tamagotchi.crimeRate += Math.max(this.tamagotchi.hunger, this.tamagotchi.boredom, this.tamagotchi.sleepiness)/10
+    this.tamagotchi.crimeRate = Math.max(this.tamagotchi.hunger, this.tamagotchi.boredom, this.tamagotchi.sleepiness)/50;
     if (Math.random()<this.tamagotchi.crimeRate){
-      this.tamagotchi.wantedLevel++
       this.displayCrime()
     }
   },
   displayCrime(){
-    let rndCrimeNum = Math.floor(Math.random()*3)+1
+    let rndCrimeNum = Math.floor(Math.random()*3)
     let crimeString = `${this.tamagotchi.name} ${this.tamagotchi.possibleCrimes[this.tamagotchi.wantedLevel][rndCrimeNum]}...`
     $("#crimeString").text(crimeString)
+    this.tamagotchi.wantedLevel++
   },
   feedTama() {
     console.log(`Feeding tamagotchi ${this.tamagotchi.name}...`);
