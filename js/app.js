@@ -54,16 +54,17 @@ const game = {
     this.lifeTimer();
   },
   updateAge() {
-    this.tamagotchi.ageHumanMins++;
+    this.tamagotchi.ageHumanMins = Math.floor(this.timerSeconds /60);
     this.tamagotchi.ageTomoYears =
       this.tamagotchi.ageHumanMins / this.tamagotchi.minsToTomoYears;
   },
   dayInTheLife() {
-      this.updateAge();
+    this.displayTimer();
+    this.updateAge();
+    this.displayAge();
+
       this.updateMetrics();
-      this.displayTimer();
     // if (!this.pauseDisplay) {
-      this.displayAge();
       this.displayMetrics();
       console.log("is alive:", this.tamagotchi.isAlive());
      // this.promptInteraction();
@@ -86,6 +87,7 @@ const game = {
   displayAge() {
     console.log("Mins elapsed:", this.tamagotchi.ageHumanMins);
     console.log("Tama age:", this.tamagotchi.ageTomoYears);
+    $("#age_field").text(this.tamagotchi.ageTomoYears)
   },
   displayMetrics() {
     console.log("Hunger:", Math.ceil(this.tamagotchi.hunger));
