@@ -95,13 +95,13 @@ const game = {
     $("#age_field").text(this.tamagotchi.ageTomoYears)
   },
   displayMetrics() {
+    let boredom = Math.ceil(this.tamagotchi.boredom)
     let hunger = Math.ceil(this.tamagotchi.hunger)
     let sleepiness = Math.ceil(this.tamagotchi.sleepiness)
-    let boredom = Math.ceil(this.tamagotchi.boredom)
-    let metrics = [hunger, sleepiness, boredom]
+    let metrics = [sleepiness, hunger, boredom]
+    console.log("Boredom:", boredom);
     console.log("Hunger:", hunger);
     console.log("Sleepiness:", sleepiness);
-    console.log("Boredom:", boredom);
 
     let statVal = ""
     metrics.forEach( element => {
