@@ -153,6 +153,8 @@ const game = {
 
   feedTama() {
     console.log(`Feeding tamagotchi ${this.tamagotchi.name}...`);
+        //reset pacman for animation
+    $(".pacman_animate").attr("class", "pacman");
     if (this.tamagotchi.hunger > 0)  {
       this.tamagotchi.hunger -= 1
       $("#action_gif").attr("src","resources/eat.gif")
@@ -164,11 +166,14 @@ const game = {
     if (this.tamagotchi.boredom > 0)  {
       this.tamagotchi.boredom -= 1
       $("#action_gif").attr("src","resources/catari.gif")
+      $(".pacman").attr("class", "pacman_animate");
       this.displayMetrics()
     }
   },
   sleepTama() {
     console.log(`Shh..${this.tamagotchi.name} is sleeping`);
+    //reset pacman for animation
+    $(".pacman_animate").attr("class", "pacman");
     if (this.tamagotchi.sleepiness > 0) {
       this.tamagotchi.sleepiness -= 1
       $("#action_gif").attr("src","resources/sleep.gif")

@@ -361,7 +361,12 @@ input::placeholder{
 .pacman{
   margin:0 50px;
   transform: translate(-300px,-1040px);
-  animation: translate 4s linear;
+}
+
+.pacman_animate{
+  margin:0 50px;
+  transform: translate(-300px,-1040px);
+  animation: translate 2s linear;
 }
 
 .pacman-top{
