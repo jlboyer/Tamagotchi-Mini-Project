@@ -65,7 +65,6 @@ const game = {
   pauseDisplay: false,
   timerSeconds: 0,
   play() {
-    $('#overlay').css("display", "none");
     //initialize button event listeners 
     $("#play_button").on("click", this.playTama.bind(this))
     $("#feed_button").on("click", this.feedTama.bind(this))
@@ -97,12 +96,15 @@ const game = {
     $('#overlay').css("display", "block");
     $('#overlay').on("click", () => {
       if ($('#overlay').css("display") === "block"){
-        $('input').val('')
-        this.displayTimer = 0;
-        
-        this.play()
+        this.timerSeconds = 0;
+        this.waitForNewName()
       }
     })
+  },
+  waitForNewName(){
+    $("#crimeString").text('')
+    $('input').val('')
+    $('#overlay').css("display", "none");
   },
   lifeTimer() {
     console.log('Into the brave unknown..')
