@@ -46,6 +46,7 @@ body {
 }
 
 #site_wrapper{
+  padding: 0 50px 0 50px;
   display:grid;
   grid-template-columns: 4fr 6fr;
   grid-template-rows: 1fr 1fr 3fr;
@@ -53,6 +54,80 @@ body {
   "title output"
   "instructions tama_ui"
   "gif tama_ui"
+}
+
+#title-header{
+  display: flex;
+  width:500px;
+  height:150px;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  margin: 50px 0 -100px 0
+}
+#subtitle-header{
+  width:600px;
+  transform:translateY(-80px);
+}
+
+h1 {
+  font-family: 'Kosugi', sans-serif;
+  color: transparent;
+  text-shadow:
+  -0.2px -0.2px 1px rgba(225, 164, 221, 0.5),
+  0.2px 0.2px 1px rgba(225, 164, 221, 0.5),
+  0 0 5px var(--neon-pink-glow),
+  0 0 2px var(--neon-pink-glow),
+  0 0 7px var(--neon-pink-glow),
+  0 0 8px var(--neon-pink-glow),
+  0 0 15px var(--neon-pink-glow);
+  font-size: 100px;
+}
+
+h2 {
+  font-family: 'Damion', cursive;
+  color:transparent;
+  font-size: 80px;
+
+  text-shadow:
+  -0.2px -0.2px 1px rgba(194,249,155,0.5),
+  0.2px 0.2px 1px rgba(194, 249, 155, 0.5),
+  0 0 2px var(--neon-green-glow),
+  0 0 5px var(--neon-green-glow),
+  0 0 7px var(--neon-green-glow),
+  0 0 8px var(--neon-green-glow),
+  0 0 15px var(--neon-green-glow);
+  transform: rotate(-5deg);
+  background-color: transparent;
+}
+
+.flicker2 {
+  animation: flicker2 1s infinite alternate; 
+}
+
+.flicker1 {
+  animation: flicker1 3s infinite alternate; 
+}
+
+#instructions{
+  grid-area: instructions;
+  height:200px;
+  width: 490px;
+  overflow:auto;
+}
+p{
+  font-family: 'Bungee';
+  color: rgba(255,255,255,0.7);
+  text-shadow:
+  -0.2px -0.2px 1px rgb(200, 223, 255,0.7),
+  0.2px 0.2px 1px rgb(200, 223, 255,0.7),
+  0 0 5px #5499F7,
+  0 0 8px #5499F7,
+  0 0 15px #5499F7;
+  font-size: 20px;
+  text-align: justify;
+  text-justify: inter-character;
+  font-weight: 100;
 }
 
 #tama_ui{
@@ -183,4 +258,52 @@ input{
 .button_container:active{
   color:white;
   fill:white;
+}
+
+@keyframes flicker1 {
+      
+  0%, 15%, 30%, 54%, 56%, 100% {
+    
+      text-shadow:
+      -0.2px -0.2px 1px var(--neon-pink-text),
+      0.2px 0.2px 1px var(--neon-pink-text),
+      0 0 2px var(--neon-pink-glow),
+      0 0 5px var(--neon-pink-glow),
+      0 0 7px var(--neon-pink-glow),
+      0 0 8px var(--neon-pink-glow),
+      0 0 15px var(--neon-pink-glow);
+  }
+  
+  20%, 24%, 55% {        
+      text-shadow: none;
+      box-shadow: none;
+  }    
+
+  0%, 15%, 30%, 54%, 56%, 100% {
+    color: transparent;
+  }
+}
+
+@keyframes flicker2 {
+      
+  0%, 15%, 30%, 54%, 56%, 100% {
+    
+      text-shadow:
+      -0.2px -0.2px 1px var(--neon-green-text),
+      0.2px 0.2px 1px var(--neon-green-text),
+      0 0 2px var(--neon-green-glow),
+      0 0 5px var(--neon-green-glow),
+      0 0 7px var(--neon-green-glow),
+      0 0 8px var(--neon-green-glow),
+      0 0 15px var(--neon-green-glow);
+  }
+  
+  20%, 24%, 55% {        
+      text-shadow: none;
+      box-shadow: none;
+  }    
+
+  0%, 15%, 30%, 54%, 56%, 100% {
+    color: transparent;
+  }
 }
