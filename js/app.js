@@ -72,10 +72,16 @@ const game = {
   },
   lifeTimer() {
     console.log('Into the brave unknown..')
+    this.setImage()
     this.tamagotchi.timerId = setInterval(() => {
       this.dayInTheLife();
       this.timerSeconds++
     }, 1000); 
+  },
+  setImage(){
+    let imgNum = Math.floor(Math.random()*3 +1)
+    let avatar = `resources/Avatar_${imgNum}.png`
+    $("#mugshot").attr("src", avatar);
   },
   displayTimer() {
     let minsElapsed = Math.floor(this.timerSeconds / 60)
