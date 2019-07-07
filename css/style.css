@@ -43,7 +43,8 @@ body{
 
 #input{
   grid-area: input;
-  background: green;
+  background: transparent;
+  color: transparent;
   font-size: 100px;
 }
 

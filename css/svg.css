@@ -45,7 +45,18 @@ body {
   background-color: black;
 }
 
+#site_wrapper{
+  display:grid;
+  grid-template-columns: 4fr 6fr;
+  grid-template-rows: 1fr 1fr 3fr;
+  grid-template-areas:
+  "title output"
+  "instructions tama_ui"
+  "gif tama_ui"
+}
+
 #tama_ui{
+  grid-area: tama_ui;
   width: 720px;
   height:480px;
   border-radius: 50px;
@@ -66,6 +77,12 @@ input{
   background-color:transparent;
   font-family: 'Bungee', sans-serif;
   font-size: 25px;
+  color: transparent;
+}
+
+::placeholder{
+  color:white;
+  opacity: 0.4;
 }
 
 #buttons{
