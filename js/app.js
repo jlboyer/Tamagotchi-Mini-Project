@@ -2,15 +2,15 @@
 class Tamagatchi {
   constructor() {
     this.name = "";
-    this.hunger = Math.floor(Math.random() * 5 + 1);
-    this.hungerRate = Math.random() * 0.4 + 0.5;
-    this.sleepiness = Math.floor(Math.random() * 5 + 1);
-    this.sleepinessRate = Math.random() * 0.4 + 0.5;
-    this.boredom = Math.floor(Math.random() * 5 + 1);
-    this.boreRate = Math.random() * 0.4 + 0.5;
+    this.hunger = Math.floor(Math.random() * 2 + 1);
+    this.hungerRate = Math.random() * 0.4 + 0.2;
+    this.sleepiness = Math.floor(Math.random() * 2 + 1);
+    this.sleepinessRate = Math.random() * 0.4 + 0.2;
+    this.boredom = Math.floor(Math.random() * 2 + 1);
+    this.boreRate = Math.random() * 0.4 + 0.2;
     this.ageTomoYears = 0;
     this.ageHumanMins = 0;
-    this.minsToTomoYears = 1; //default 1 year is 1 minute
+    this.minsToTomoYears = 1;
     this.birthTime = {
       year: null,
       month: null,
@@ -34,8 +34,6 @@ class Tamagatchi {
     return this.hunger < 10 && this.sleepiness < 10 && this.boreRate < 10;
   }
   giveName() {
-    // rl.question("What would you like to name your tamagotchi? ",
-    //   answer => { this.name = answer})
     this.name = $('input').val();
   }
 }
@@ -54,16 +52,15 @@ const game = {
     this.lifeTimer();
   },
   updateAge() {
-    this.tamagotchi.ageHumanMins = Math.floor(this.timerSeconds /60);
+    this.tamagotchi.ageHumanMins = this.timerSeconds/60;
     this.tamagotchi.ageTomoYears =
-      this.tamagotchi.ageHumanMins / this.tamagotchi.minsToTomoYears;
+    Math.floor(this.tamagotchi.ageHumanMins / this.tamagotchi.minsToTomoYears);
   },
   dayInTheLife() {
     this.displayTimer();
     this.updateAge();
     this.displayAge();
-
-      this.updateMetrics();
+    this.updateMetrics();
     // if (!this.pauseDisplay) {
       this.displayMetrics();
       console.log("is alive:", this.tamagotchi.isAlive());
@@ -96,9 +93,23 @@ const game = {
     $("#age_field").text(this.tamagotchi.ageTomoYears)
   },
   displayMetrics() {
-    console.log("Hunger:", Math.ceil(this.tamagotchi.hunger));
-    console.log("Sleepiness:", Math.ceil(this.tamagotchi.sleepiness));
-    console.log("Boredom:", Math.ceil(this.tamagotchi.boredom));
+    let hunger = Math.ceil(this.tamagotchi.hunger)
+    let sleepiness = Math.ceil(this.tamagotchi.sleepiness)
+    let boredom = Math.ceil(this.tamagotchi.boredom)
+    let metrics = [hunger, sleepiness, boredom]
+    console.log("Hunger:", hunger);
+    console.log("Sleepiness:", sleepiness);
+    console.log("Boredom:", boredom);
+
+    let statVal = ""
+    metrics.forEach( element => {
+      for (let i = 0; i < element; i++){
+        statVal += "||"
+      }
+      statVal += "<br>"
+    })
+    statVal += "&#9733;"
+    $("#val").html(statVal)
   },
   updateMetrics() {
     this.tamagotchi.hunger +=
