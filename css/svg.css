@@ -7,7 +7,7 @@
   --neon-pink-glow: rgb(226, 43, 214);
   --neon-pink-text: rgba(225, 164, 221, 0.5);
   --neon-blue-glow: rgba(84,153,255);
-  --neon-blue-text: rgb(200, 223, 255,0.7);
+  --neon-blue-text: rgba(200, 223, 255,0.7);
   --neon-ltblue-glow: rgb(153,238,253);
 }
 
@@ -34,6 +34,8 @@
   0 0 15px var(--neon-blue-glow);
 }
 
+
+
 *{
   margin: 0;
   box-sizing: border-box;
@@ -43,6 +45,20 @@ body {
   background-color: black;
 }
 
+#tama_ui{
+  width: 720px;
+  height:480px;
+  border-radius: 50px;
+  border: solid 5px var(--neon-blue-glow);
+  box-shadow: 
+  -0.2px -0.2px 1px var(--neon-blue-text),
+  0.2px 0.2px 1px var(--neon-blue-text),
+  0 0 2px var(--neon-blue-glow),
+  0 0 5px var(--neon-blue-glow),
+  0 0 7px var(--neon-blue-glow),
+  0 0 15px var(--neon-blue-glow);
+  background: linear-gradient(to bottom, rgba(203,48,242,1) 0%,rgba(47,192,237,0.47) 36%,rgba(249,253,254,0) 68%,rgba(255,255,255,0.03) 69%,rgba(42,99,214,0.97) 99%,rgba(42,99,214,1) 100%);
+}
 #buttons{
   width:720px;
   height:240px;
