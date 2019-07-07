@@ -115,6 +115,9 @@ h2 {
   width: 490px;
   overflow:auto;
 }
+#instructions::-webkit-scrollbar {
+  display: none;
+}
 p{
   font-family: 'Bungee';
   color: rgba(255,255,255,0.7);
@@ -129,6 +132,22 @@ p{
   text-justify: inter-character;
   font-weight: 100;
 }
+
+.typewriter{
+  overflow: hidden; /* Ensures the content is not revealed until the animation */
+  white-space: nowrap; 
+  display: flex;
+  justify-content: left;
+    padding:30px;
+    animation: 
+      scrolling 2s steps(200, end);
+  }
+  
+  /* The typing effect */
+  @keyframes scrolling {
+    0% { width: 0 }
+    100% { width: 100% }
+  }
 
 #output{
   display: flex;
@@ -152,14 +171,14 @@ p{
   width: 720px;
   height:480px;
   border-radius: 50px;
-  border: solid 5px var(--neon-blue-glow);
+  border: solid 5px var(--neon-green-glow);
   box-shadow: 
-  -0.2px -0.2px 1px var(--neon-blue-text),
-  0.2px 0.2px 1px var(--neon-blue-text),
-  0 0 2px var(--neon-blue-glow),
-  0 0 5px var(--neon-blue-glow),
-  0 0 7px var(--neon-blue-glow),
-  0 0 15px var(--neon-blue-glow);
+  -0.2px -0.2px 1px var(--neon-green-text),
+  0.2px 0.2px 1px var(--neon-green-text),
+  0 0 2px var(--neon-green-glow),
+  0 0 5px var(--neon-green-glow),
+  0 0 7px var(--neon-green-glow),
+  0 0 15px var(--neon-green-glow);
   background: linear-gradient(to bottom, rgba(203,48,242,1) 0%,rgba(47,192,237,0.47) 36%,rgba(249,253,254,0) 68%,rgba(255,255,255,0.03) 69%,rgba(42,99,214,0.97) 99%,rgba(42,99,214,1) 100%);
 }
 
