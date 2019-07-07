@@ -43,6 +43,7 @@ class Tamagatchi {
 const game = {
   tamagotchi: {},
   pauseDisplay: false,
+  timerSeconds: 0,
   play() {
     this.spawnTamagotchi();
   },
@@ -58,9 +59,9 @@ const game = {
       this.tamagotchi.ageHumanMins / this.tamagotchi.minsToTomoYears;
   },
   dayInTheLife() {
-    this.updateAge();
-    this.updateMetrics();
-
+      this.updateAge();
+      this.updateMetrics();
+      this.displayTimer();
     // if (!this.pauseDisplay) {
       this.displayAge();
       this.displayMetrics();
@@ -71,9 +72,16 @@ const game = {
   lifeTimer() {
     console.log('Into the brave unknown..')
     this.tamagotchi.timerId = setInterval(() => {
-      console.log('hi')
       this.dayInTheLife();
-    }, 5000); //make sure to add back * 60 for mins!!!!!
+      this.timerSeconds++
+    }, 1000); 
+  },
+  displayTimer() {
+    let minsElapsed = Math.floor(this.timerSeconds / 60)
+    let seconds = this.timerSeconds - minsElapsed*60
+    minsElapsed = minsElapsed.toString(10)
+    seconds = seconds.toString(10)
+    $("#timer").text(`${minsElapsed.padStart(2,"0")}:${seconds.padStart(2,"0")}`);
   },
   displayAge() {
     console.log("Mins elapsed:", this.tamagotchi.ageHumanMins);
