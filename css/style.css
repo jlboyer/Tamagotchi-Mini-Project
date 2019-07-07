@@ -133,7 +133,7 @@ p{
   font-weight: 100;
 }
 
-.typewriter{
+/* .typewriter{
   overflow: hidden; /* Ensures the content is not revealed until the animation */
   white-space: nowrap; 
   display: flex;
@@ -141,7 +141,7 @@ p{
     padding:30px;
     animation: 
       scrolling 2s steps(200, end);
-  }
+  } */
   
   /* The typing effect */
   @keyframes scrolling {
@@ -150,8 +150,14 @@ p{
   }
 
 #output{
+  width: 720px;
   display: flex;
   align-items: center;
+  /* overflow:auto; */
+  overflow-wrap: break-word;
+}
+#crimeString{
+  font-size: 200%;
 }
 #gif{
   grid-area:gif;

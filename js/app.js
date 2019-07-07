@@ -33,7 +33,7 @@ class Tamagatchi {
       'was picked out of a lineup for a carjacking a Toyota Supra',
       'was caught for tax evasion sheltering money in Macau'],
       ['was involved in a money laundering scheme through a Pachinko parlor',
-      'has been involved in aprotection racket at a local night club',
+      'has been involved in a protection racket at a local night club',
       'fingerprint\'s have been found at the scene of a murder'],
       ['has been operating a multi-million dollar drug smuggling operation',
       'has been indicted on a massive case of securities fraud',
