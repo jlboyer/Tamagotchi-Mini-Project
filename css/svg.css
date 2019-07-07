@@ -129,6 +129,11 @@ p{
   text-justify: inter-character;
   font-weight: 100;
 }
+
+#output{
+  display: flex;
+  align-items: center;
+}
 #gif{
   grid-area:gif;
   padding: 20px 50px;
