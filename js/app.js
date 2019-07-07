@@ -95,7 +95,14 @@ const game = {
   gameOver(){
     clearInterval(this.tamagotchi.timerId)
     $('#overlay').css("display", "block");
-    // $('#overlay').on("click",this.play());
+    $('#overlay').on("click", () => {
+      if ($('#overlay').css("display") === "block"){
+        $('input').val('')
+        this.displayTimer = 0;
+        
+        this.play()
+      }
+    })
   },
   lifeTimer() {
     console.log('Into the brave unknown..')

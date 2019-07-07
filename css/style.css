@@ -415,20 +415,14 @@ background-color:yellow;
 #gameOver{
   font-family: 'Damion', cursive;
   color: transparent;
-  /* text-shadow:
-  -0.2px -0.2px 1px rgba(225, 164, 221, 0.5),
-  0.2px 0.2px 1px rgba(225, 164, 221, 0.5),
-  0 0 5px var(--neon-pink-glow),
-  0 0 2px var(--neon-pink-glow),
-  0 0 7px var(--neon-pink-glow),
-  0 0 8px var(--neon-pink-glow),
-  0 0 15px var(--neon-pink-glow); */
   font-size: 150px;
   transform: translateY(calc(50vh - 100px));
   animation: flicker1 1s infinite alternate;
 }
+
 #playAgain{
   font-size: 250%;
   text-align: center;
   transform: translateY(calc(50vh - 100px));
+  animation: pulse 5s infinite;
 }
