@@ -65,6 +65,7 @@ const game = {
   pauseDisplay: false,
   timerSeconds: 0,
   play() {
+    $('#overlay').css("display", "none");
     //initialize button event listeners 
     $("#play_button").on("click", this.playTama.bind(this))
     $("#feed_button").on("click", this.feedTama.bind(this))
@@ -93,6 +94,7 @@ const game = {
   gameOver(){
     clearInterval(this.tamagotchi.timerId)
     $('#overlay').css("display", "block");
+    // $('#overlay').on("click",this.play())
   },
   lifeTimer() {
     console.log('Into the brave unknown..')
