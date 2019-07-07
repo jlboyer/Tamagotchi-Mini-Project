@@ -34,8 +34,9 @@ class Tamagatchi {
     return this.hunger < 10 && this.sleepiness < 10 && this.boreRate < 10;
   }
   giveName() {
-    rl.question("What would you like to name your tamagotchi? ",
-      answer => { this.name = answer})
+    // rl.question("What would you like to name your tamagotchi? ",
+    //   answer => { this.name = answer})
+    this.name = $('input').val();
   }
 }
 
@@ -43,8 +44,6 @@ const game = {
   tamagotchi: {},
   pauseDisplay: false,
   play() {
-    //this will cycle through operations
-    //1. create tamagotchi
     this.spawnTamagotchi();
   },
   spawnTamagotchi() {
@@ -132,6 +131,7 @@ const game = {
   },
 };
 
-game.play();
-
-// game.promptInteraction();
+$("form").submit((e) => {
+  e.preventDefault();
+  game.play()
+})
