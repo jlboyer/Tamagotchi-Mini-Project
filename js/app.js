@@ -1,9 +1,3 @@
-const readline = require("readline");
-
-const rl = readline.createInterface({
-  input: process.stdin,
-  output: process.stdout
-});
 
 class Tamagatchi {
   constructor() {
@@ -99,7 +93,8 @@ const game = {
     this.tamagotchi.boredom +=
       this.tamagotchi.ageTomoYears * this.tamagotchi.boreRate;
   },
-  promptInteraction() {
+
+/*   promptInteraction() {
     this.pauseDisplay = true;
     rl.question(
       "Would you like to (F)eed (P)lay or (S)end to bed? ",
@@ -124,12 +119,10 @@ const game = {
         }
       }
     );
-  },
+  }, */
+
   feedTama() {
     console.log(`Feeding tamagotchi ${this.tamagotchi.name}...`);
-    setTimeout(() => {
-      this.pauseDisplay = false;
-    }, 2000);
   },
   playTama() {
     console.log(`Playing with tamagotchi ${this.tamagotchi.name}...`);
