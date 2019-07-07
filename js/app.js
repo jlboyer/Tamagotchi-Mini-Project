@@ -38,7 +38,9 @@ class Tamagatchi {
       ['has been operating a multi-million dollar drug smuggling operation',
       'has been indicted on a massive case of securities fraud',
       'has assembled a rogue group of mercenaries and acquired a weapon of mass destruction']
-    ]
+    ];
+    this.crimeRate = 0.2;
+    this.wantedLevel = 0;
   }
   birthday() {
     const birthTime = new Date();
@@ -142,6 +144,16 @@ const game = {
       (this.tamagotchi.ageTomoYears + 1) * this.tamagotchi.sleepinessRate;
     this.tamagotchi.boredom +=
       (this.tamagotchi.ageTomoYears + 1) * this.tamagotchi.boreRate;
+    this.tamagotchi.crimeRate += Math.max(this.tamagotchi.hunger, this.tamagotchi.boredom, this.tamagotchi.sleepiness)/10
+    if (Math.random()<this.tamagotchi.crimeRate){
+      this.tamagotchi.wantedLevel++
+      this.displayCrime()
+    }
+  },
+  displayCrime(){
+    let rndCrimeNum = Math.floor(Math.random()*3)+1
+    let crimeString = `${this.tamagotchi.name} ${this.tamagotchi.possibleCrimes[this.tamagotchi.wantedLevel][rndCrimeNum]}...`
+    $("#crimeString").text(crimeString)
   },
   feedTama() {
     console.log(`Feeding tamagotchi ${this.tamagotchi.name}...`);
