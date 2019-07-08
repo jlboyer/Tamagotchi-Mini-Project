@@ -165,7 +165,10 @@ const game = {
       (this.tamagotchi.ageTomoYears + 1) * this.tamagotchi.sleepinessRate;
     this.tamagotchi.boredom +=
       (this.tamagotchi.ageTomoYears + 1) * this.tamagotchi.boreRate;
-    this.tamagotchi.crimeRate = Math.max(this.tamagotchi.hunger, this.tamagotchi.boredom, this.tamagotchi.sleepiness)/20;
+      //the propensity to commit crimes is dependent on the worst level of boredom. sleepiness and hunger
+      //this is in turn dependent upon age
+      //in other words, old habits die hard
+    this.tamagotchi.crimeRate = Math.max(this.tamagotchi.hunger, this.tamagotchi.boredom, this.tamagotchi.sleepiness)/50;
     if (Math.random()<this.tamagotchi.crimeRate){
       this.displayCrime()
     }
