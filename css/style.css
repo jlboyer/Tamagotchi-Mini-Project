@@ -361,7 +361,6 @@ input::placeholder{
   }
 }
 
-
 .pacman{
   margin:0 50px;
   transform: translate(-300px,-1040px);
@@ -388,7 +387,6 @@ background-color:yellow;
   border-radius:0 0 90px 90px;
   animation: spin2 0.6s infinite linear;
 }
-
 
 /* Animation*/
 @keyframes spin1 {

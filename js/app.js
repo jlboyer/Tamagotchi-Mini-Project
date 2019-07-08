@@ -10,7 +10,7 @@ class Tamagatchi {
     this.boreRate = Math.random() * 0.4 + 0.2;
     this.ageTomoYears = 0;
     this.ageHumanMins = 0;
-    this.minsToTomoYears = 0.5;
+    this.minsToTomoYears = 1;
     this.birthTime = {
       year: null,
       month: null,
@@ -102,6 +102,7 @@ const game = {
     })
   },
   waitForNewName(){
+    $("#mugshot").attr("src", "resources/Avatar_0.png");
     $("#crimeString").text('')
     $('input').val('')
     $('#overlay').css("display", "none");
@@ -132,9 +133,9 @@ const game = {
     $("#age_field").text(this.tamagotchi.ageTomoYears)
   },
   displayMetrics() {
-    let boredom = Math.ceil(this.tamagotchi.boredom)
-    let hunger = Math.ceil(this.tamagotchi.hunger)
-    let sleepiness = Math.ceil(this.tamagotchi.sleepiness)
+    let boredom = Math.floor(this.tamagotchi.boredom)
+    let hunger = Math.floor(this.tamagotchi.hunger)
+    let sleepiness = Math.floor(this.tamagotchi.sleepiness)
     let metrics = [sleepiness, hunger, boredom]
     console.log("Boredom:", boredom);
     console.log("Hunger:", hunger);
@@ -164,7 +165,7 @@ const game = {
       (this.tamagotchi.ageTomoYears + 1) * this.tamagotchi.sleepinessRate;
     this.tamagotchi.boredom +=
       (this.tamagotchi.ageTomoYears + 1) * this.tamagotchi.boreRate;
-    this.tamagotchi.crimeRate = Math.max(this.tamagotchi.hunger, this.tamagotchi.boredom, this.tamagotchi.sleepiness)/30;
+    this.tamagotchi.crimeRate = Math.max(this.tamagotchi.hunger, this.tamagotchi.boredom, this.tamagotchi.sleepiness)/20;
     if (Math.random()<this.tamagotchi.crimeRate){
       this.displayCrime()
     }
